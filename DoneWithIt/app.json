@@ -4,9 +4,9 @@
     "slug": "DoneWithIt",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "../assets/chair.png",
+    "icon": "../assets/chair.jpg",
     "splash": {
-      "image": "../assets/chair.png",
+      "image": "../assets/chair.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,7 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./app/assets/chair.png",
+        "foregroundImage": "./app/assets/chair.jpg",
         "backgroundColor": "#FFFFFF"
       }
     }
