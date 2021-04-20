@@ -11,7 +11,6 @@ function AppFormField({ name, ...otherProps }) {
     <>
       <AppTextInput
         {...otherProps}
-        keyboardType="email-address"
         onBlur={() => setFieldTouched(name)}
         onChangeText={handleChange(name)}
       />
