@@ -1,0 +1,7 @@
+Packages to download:
+
+Form Building Package: Formik
+    -> Use: import { Formik } from "formik";
+    
+Form Validation: Yup
+    -> Use: import * as Yup from "yup";
