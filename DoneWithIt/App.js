@@ -1,15 +1,37 @@
-import React, { useState } from "react";
-import AccountsScreen from "./app/screens/AccountsScreen";
-import LoginScreen from "./app/screens/LoginScreen";
-import RegisterScreen from "./app/screens/RegisterScreen";
-import ListingEditScreen from "./app/screens/ListingEditScreen";
-import ListItem from "./app/components/ListItem";
+import React, { useEffect, useState } from "react";
+import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
+
 import Screen from "./app/components/Screen";
-import { FlatList } from "react-native-gesture-handler";
-import ListItemSeperator from "./app/components/ListItemSeperator";
-import MessagesScreen from "./app/screens/MessagesScreen";
-import ListItemDeleteAction from "./app/components/ListItemDeleteAction";
+import { Button, Image } from "react-native";
 
 export default function App() {
-  return <ListingEditScreen />;
+  const [imageUri, setImageUri] = useState();
+
+  const requestPermission = async () => {
+    const { granted } = await ImagePicker.getMediaLibraryPermissionsAsync();
+    if (!granted) {
+      alert("You need to enable permission to access the library.");
+    }
+  };
+
+  useEffect(() => {
+    requestPermission();
+  }, []);
+
+  const selectImage = async () => {
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync();
+      if (result.cancelled) setImageUri(result.uri);
+    } catch (error) {
+      console.log("Error reading image");
+    }
+  };
+
+  return (
+    <Screen>
+      <Button title="Select Image" onPress={selectImage} />
+      <Image width={200} height={200} source={{ uri: imageUri }} />
+    </Screen>
+  );
 }
