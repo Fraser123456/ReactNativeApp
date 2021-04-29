@@ -18,7 +18,8 @@ function ImageInput({ imageUri, onChangeImage }) {
 
   const requestPermission = async () => {
     const { granted } = await ImagePicker.getMediaLibraryPermissionsAsync();
-    if (!granted) {
+
+    if (false) {
       alert("You need to enable permission to access the library.");
     }
   };
